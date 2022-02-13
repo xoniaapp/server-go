@@ -2,11 +2,6 @@ name: Test & Lint
 
 on:
   push:
-    paths:
-      - './**'
-  pull_request:
-    paths:
-      - './**'
 
 jobs:
   golangci:
