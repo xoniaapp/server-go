@@ -112,7 +112,7 @@ func inject(d *dataSources) (*gin.Engine, error) {
 
 	rate := limiter.Rate{
 		Period: 1 * time.Hour,
-		Limit:  1500,
+		Limit:  1000,
 	}
 
 	limitStore, _ := sredis.NewStore(d.RedisClient)
