@@ -5,6 +5,7 @@
 // Everyone is permitted to copy and distribute verbatim copies
 // of this license document, but changing it is not allowed.
 //
+
 package main
 
 import (
@@ -114,7 +115,7 @@ func inject(d *dataSources) (*gin.Engine, error) {
 	maxBodyBytes := os.Getenv("MAX_BODY_BYTES")
 	mbb, err := strconv.ParseInt(maxBodyBytes, 0, 64)
 	if err != nil {
-		return nil, fmt.Errorf("could not parse MAX_BODY_BYTES as int: %w", err)
+		return nil, fmt.Errorf("Could not parse MAX_BODY_BYTES as int: %w", err)
 	}
 
 	rate := limiter.Rate{

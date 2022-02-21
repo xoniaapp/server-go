@@ -10,13 +10,12 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
-
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
 
 // @title Xonia API
-// @version 2.0.1
+// @version 2.2.0
 // @description Xonia REST API
 
 // @license.name GNUv3
@@ -25,6 +24,8 @@ import (
 
 func main() {
 	log.Println("STARTING SERVER...")
+
+	// TODO: Set gin.Mode() to release by default.
 	if gin.Mode() != gin.ReleaseMode {
 		err := godotenv.Load()
 		if err != nil {

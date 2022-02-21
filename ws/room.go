@@ -6,7 +6,7 @@ import (
 	"github.com/aelpxy/xoniaapp/model"
 	"github.com/go-redis/redis/v8"
 )
-// Room is a struct
+
 type Room struct {
 	id         string
 	clients    map[*Client]bool
@@ -83,4 +83,3 @@ func (room *Room) subscribeToRoomMessages() {
 		room.broadcastToClientsInRoom([]byte(msg.Payload))
 	}
 }
-// LICENSE@GNUv3

@@ -39,5 +39,3 @@ const (
 	PushToTopAction         = "push_to_top"
 	RequestCountEmission    = "requestCount"
 )
-
-// @aelpxy

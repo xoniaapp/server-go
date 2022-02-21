@@ -54,7 +54,7 @@ func NewHandler(c *Config) {
 		})
 	})
 
-	c.R.Use(static.Serve("/", static.LocalFile("./static", true)))
+	c.R.Use(static.Serve("/", static.LocalFile("./public", true)))
 
 	if gin.Mode() != gin.TestMode {
 		c.R.Use(middleware.Timeout(c.TimeoutDuration, apperrors.NewServiceUnavailable()))
