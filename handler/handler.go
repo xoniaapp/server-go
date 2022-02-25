@@ -10,8 +10,8 @@ import (
 	"github.com/aelpxy/xoniaapp/handler/middleware"
 	"github.com/aelpxy/xoniaapp/model"
 	"github.com/aelpxy/xoniaapp/model/apperrors"
-	"github.com/swaggo/files"
-	"github.com/swaggo/gin-swagger"
+	// "github.com/swaggo/files"
+	// "github.com/swaggo/gin-swagger"
 	"time"
 )
 
