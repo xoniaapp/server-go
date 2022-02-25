@@ -60,7 +60,7 @@ func NewHandler(c *Config) {
 		c.R.Use(middleware.Timeout(c.TimeoutDuration, apperrors.NewServiceUnavailable()))
 	}
 
-	c.R.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	// c.R.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	ag := c.R.Group("api/account")
 	ag.POST("/register", h.Register)
 	ag.POST("/login", h.Login)
