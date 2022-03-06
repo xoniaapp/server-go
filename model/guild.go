@@ -2,11 +2,11 @@ package model
 
 import (
 	"context"
-	"github.com/lib/pq"
 	"time"
+
+	"github.com/lib/pq"
 )
 
-// Guild represents the server many users can chat in.
 type Guild struct {
 	BaseModel
 	Name        string `gorm:"not null"`
@@ -17,10 +17,6 @@ type Guild struct {
 	Channels    []Channel      `gorm:"constraint:OnDelete:CASCADE;"`
 	Bans        []User         `gorm:"many2many:bans;constraint:OnDelete:CASCADE;"`
 }
-
-// GuildResponse contains all info to display a guild.
-// The DefaultChannelId is the channel the user first gets directed to
-// and is the oldest channel of the guild.
 type GuildResponse struct {
 	Id               string    `json:"id"`
 	Name             string    `json:"name"`
@@ -30,10 +26,8 @@ type GuildResponse struct {
 	UpdatedAt        time.Time `json:"updatedAt"`
 	HasNotification  bool      `json:"hasNotification"`
 	DefaultChannelId string    `json:"default_channel_id"`
-} //@name GuildResponse
+}
 
-// SerializeGuild returns the guild API response.
-// The DefaultChannelId represents the default channel the user gets send to.
 func (g Guild) SerializeGuild(channelId string) GuildResponse {
 	return GuildResponse{
 		Id:               g.ID,
@@ -47,8 +41,6 @@ func (g Guild) SerializeGuild(channelId string) GuildResponse {
 	}
 }
 
-// GuildService defines methods related to guild operations the handler layer expects
-// any service it interacts with to implement
 type GuildService interface {
 	GetUser(uid string) (*User, error)
 	GetGuild(id string) (*Guild, error)
@@ -69,9 +61,6 @@ type GuildService interface {
 	FindUsersByIds(ids []string, guildId string) (*[]User, error)
 	UpdateMemberLastSeen(userId, guildId string) error
 }
-
-// GuildRepository defines methods related to guild db operations the service layer expects
-// any repository it interacts with to implement
 type GuildRepository interface {
 	FindUserByID(uid string) (*User, error)
 	FindByID(id string) (*Guild, error)

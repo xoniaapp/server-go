@@ -28,8 +28,6 @@ func (message *WebsocketMessage) Encode() []byte {
 	return encoding
 }
 
-// SocketService defines methods related emitting websockets events the service layer expects
-// any repository it interacts with to implement
 type SocketService interface {
 	EmitNewMessage(room string, message *MessageResponse)
 	EmitEditMessage(room string, message *MessageResponse)

@@ -6,39 +6,28 @@ import (
 	"net/http"
 )
 
-// Type holds a type string and integer code for the error
 type Type string
 
-// "Set" of valid errorTypes
 const (
-	Authorization        Type = "AUTHORIZATION"        // Authentication Failures -
-	BadRequest           Type = "BADREQUEST"           // Validation errors / BadInput
-	Conflict             Type = "CONFLICT"             // Already exists (eg, create account with existent email) - 409
-	Internal             Type = "INTERNAL"             // Server (500) and fallback errors
-	NotFound             Type = "NOTFOUND"             // For not finding resource
-	PayloadTooLarge      Type = "PAYLOADTOOLARGE"      // for uploading tons of JSON, or an image over the limit - 413
-	ServiceUnavailable   Type = "SERVICE_UNAVAILABLE"  // For long running handlers
-	UnsupportedMediaType Type = "UNSUPPORTEDMEDIATYPE" // for http 415
+	Authorization        Type = "AUTHORIZATION"
+	BadRequest           Type = "BADREQUEST"
+	Conflict             Type = "CONFLICT"
+	Internal             Type = "INTERNAL"
+	NotFound             Type = "NOTFOUND"
+	PayloadTooLarge      Type = "PAYLOADTOOLARGE"
+	ServiceUnavailable   Type = "SERVICE_UNAVAILABLE"
+	UnsupportedMediaType Type = "UNSUPPORTEDMEDIATYPE"
 )
 
-// Error holds a custom error for the application
-// which is helpful in returning a consistent
-// error type/message from API endpoints
 type Error struct {
 	Type    Type   `json:"type"`
 	Message string `json:"message"`
 }
 
-// Error satisfies standard error interface
-// we can return errors from this package as
-// a regular old go _error_
 func (e *Error) Error() string {
 	return e.Message
 }
 
-// Status is a mapping errors to status codes
-// Of course, this is somewhat redundant since
-// our errors already map http status codes
 func (e *Error) Status() int {
 	switch e.Type {
 	case Authorization:
@@ -61,10 +50,6 @@ func (e *Error) Status() int {
 		return http.StatusInternalServerError
 	}
 }
-
-// Status checks the runtime type
-// of the error and returns an http
-// status code if the error is model.Error
 func Status(err error) int {
 	var e *Error
 	if errors.As(err, &e) {
@@ -73,11 +58,6 @@ func Status(err error) int {
 	return http.StatusInternalServerError
 }
 
-/*
-* Error "Factories"
- */
-
-// NewAuthorization to create a 401
 func NewAuthorization(reason string) *Error {
 	return &Error{
 		Type:    Authorization,
@@ -85,7 +65,6 @@ func NewAuthorization(reason string) *Error {
 	}
 }
 
-// NewBadRequest to create 400 errors (validation, for example)
 func NewBadRequest(reason string) *Error {
 	return &Error{
 		Type:    BadRequest,
@@ -93,7 +72,6 @@ func NewBadRequest(reason string) *Error {
 	}
 }
 
-// NewConflict to create an error for 409
 func NewConflict(name string, value string) *Error {
 	return &Error{
 		Type:    Conflict,
@@ -101,7 +79,6 @@ func NewConflict(name string, value string) *Error {
 	}
 }
 
-// NewInternal for 500 errors and unknown errors
 func NewInternal() *Error {
 	return &Error{
 		Type:    Internal,
@@ -109,7 +86,6 @@ func NewInternal() *Error {
 	}
 }
 
-// NewNotFound to create an error for 404 with a generic error message
 func NewNotFound(name string, value string) *Error {
 	return &Error{
 		Type:    NotFound,
@@ -117,7 +93,6 @@ func NewNotFound(name string, value string) *Error {
 	}
 }
 
-// NewPayloadTooLarge to create an error for 413
 func NewPayloadTooLarge(maxBodySize int64, contentLength int64) *Error {
 	return &Error{
 		Type:    PayloadTooLarge,
@@ -125,7 +100,6 @@ func NewPayloadTooLarge(maxBodySize int64, contentLength int64) *Error {
 	}
 }
 
-// NewServiceUnavailable to create an error for 503
 func NewServiceUnavailable() *Error {
 	return &Error{
 		Type:    ServiceUnavailable,
@@ -133,7 +107,6 @@ func NewServiceUnavailable() *Error {
 	}
 }
 
-// NewUnsupportedMediaType to create an error for 415
 func NewUnsupportedMediaType(reason string) *Error {
 	return &Error{
 		Type:    UnsupportedMediaType,

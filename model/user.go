@@ -5,7 +5,7 @@ import (
 	"mime/multipart"
 )
 
-// User represents the user of the website.
+// @User struct
 type User struct {
 	BaseModel
 	Username string    `gorm:"not null" json:"username"`
@@ -17,10 +17,9 @@ type User struct {
 	Requests []User    `gorm:"many2many:friend_requests;joinForeignKey:sender_id;joinReferences:receiver_id" json:"-"`
 	Guilds   []Guild   `gorm:"many2many:members;" json:"-"`
 	Message  []Message `json:"-"`
-} //@name User
+}
 
-// UserService defines methods related to account operations the handler layer expects
-// any service it interacts with to implement
+// @UserService interface
 type UserService interface {
 	Get(id string) (*User, error)
 	GetByEmail(email string) (*User, error)
@@ -37,8 +36,7 @@ type UserService interface {
 	GetRequestCount(userId string) (*int64, error)
 }
 
-// UserRepository defines methods related to account db operations the service layer expects
-// any repository it interacts with to implement
+// @UserRepository interface
 type UserRepository interface {
 	FindByID(id string) (*User, error)
 	Create(user *User) (*User, error)

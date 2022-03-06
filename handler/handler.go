@@ -1,15 +1,17 @@
 package handler
 
 import (
-	"github.com/gin-contrib/sessions"
-	"github.com/gin-gonic/contrib/static"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+
 	_ "github.com/aelpxy/xoniaapp/docs"
 	"github.com/aelpxy/xoniaapp/handler/middleware"
 	"github.com/aelpxy/xoniaapp/model"
 	"github.com/aelpxy/xoniaapp/model/apperrors"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-gonic/contrib/static"
+	"github.com/gin-gonic/gin"
+
 	// "github.com/swaggo/files"
 	// "github.com/swaggo/gin-swagger"
 	"time"

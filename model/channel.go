@@ -2,10 +2,6 @@ package model
 
 import "time"
 
-// Channel represents a text channel in a guild
-// or a text channel for DMs between users.
-// GuildID should only be nil if it is a DM channel
-// PCMembers should only be used if the channel is private.
 type Channel struct {
 	BaseModel
 	GuildID      *string   `gorm:"index"`
@@ -17,7 +13,6 @@ type Channel struct {
 	Messages     []Message `gorm:"constraint:OnDelete:CASCADE;"`
 }
 
-// ChannelResponse is the JSON response of the channel
 type ChannelResponse struct {
 	Id              string    `json:"id"`
 	Name            string    `json:"name"`
@@ -25,9 +20,8 @@ type ChannelResponse struct {
 	CreatedAt       time.Time `json:"createdAt"`
 	UpdatedAt       time.Time `json:"updatedAt"`
 	HasNotification bool      `json:"hasNotification"`
-} //@name Channel
+}
 
-// SerializeChannel returns the channel API response.
 func (c Channel) SerializeChannel() ChannelResponse {
 	return ChannelResponse{
 		Id:              c.ID,
@@ -39,8 +33,6 @@ func (c Channel) SerializeChannel() ChannelResponse {
 	}
 }
 
-// ChannelService defines methods related to channel operations the handler layer expects
-// any service it interacts with to implement
 type ChannelService interface {
 	CreateChannel(channel *Channel) (*Channel, error)
 	GetChannels(userId string, guildId string) (*[]ChannelResponse, error)
@@ -60,8 +52,6 @@ type ChannelService interface {
 	OpenDMForAll(dmId string) error
 }
 
-// ChannelRepository defines methods related to channel db operations the service layer expects
-// any repository it interacts with to implement
 type ChannelRepository interface {
 	Create(channel *Channel) (*Channel, error)
 	GetGuildDefault(guildId string) (*Channel, error)
