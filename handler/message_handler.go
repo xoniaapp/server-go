@@ -3,8 +3,6 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	validation "github.com/go-ozzo/ozzo-validation/v4"
-	// validation "github.com/go-ozzo/ozzo-validation/v4"
-	// gonanoid "github.com/matoous/go-nanoid"
 	"log"
 	"mime/multipart"
 	"net/http"
@@ -178,8 +176,6 @@ func (h *Handler) CreateMessage(c *gin.Context) {
 			return
 		}
 
-		// Prevent file upload on the live server.
-		// Remove the if part if you do want upload
 		var attachment *model.Attachment
 		if gin.Mode() == gin.ReleaseMode {
 			attachment, err = h.messageService.UploadFile(req.File, channel.ID)
@@ -190,16 +186,17 @@ func (h *Handler) CreateMessage(c *gin.Context) {
 				})
 				return
 			}
-		} else {
-			attachment, err = h.messageService.UploadFile(req.File, channel.ID)
-
-			if err != nil {
-				c.JSON(apperrors.Status(err), gin.H{
-					"error": err,
-				})
-				return
-			}
 		}
+		// else {
+		// 	attachment, err = h.messageService.UploadFile(req.File, channel.ID)
+
+		// 	if err != nil {
+		// 		c.JSON(apperrors.Status(err), gin.H{
+		// 			"error": err,
+		// 		})
+		// 		return
+		// 	}
+		// }
 
 		params.Attachment = attachment
 	}
