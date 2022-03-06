@@ -11,15 +11,16 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
+	"os"
+
+	"github.com/aelpxy/xoniaapp/model"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/go-redis/redis/v8"
-	"github.com/aelpxy/xoniaapp/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
-	"os"
 )
 
 type dataSources struct {
@@ -36,7 +37,7 @@ func initDS() (*dataSources, error) {
 	db, err := gorm.Open(postgres.Open(dbUrl))
 
 	if err != nil {
-		return nil, fmt.Errorf("Error opening Database: %w", err)
+		return nil, fmt.Errorf("error opening Database: %w", err)
 	}
 
 	if err := db.AutoMigrate(
@@ -48,11 +49,11 @@ func initDS() (*dataSources, error) {
 		&model.Message{},
 		&model.Attachment{},
 	); err != nil {
-		return nil, fmt.Errorf("Error migrating models: %w", err)
+		return nil, fmt.Errorf("error migrating models: %w", err)
 	}
 
 	if err := db.SetupJoinTable(&model.Guild{}, "Members", &model.Member{}); err != nil {
-		return nil, fmt.Errorf("Error creating join table: %w", err)
+		return nil, fmt.Errorf("error creating join table: %w", err)
 	}
 
 	redisURL := os.Getenv("REDIS_URL")
@@ -67,7 +68,7 @@ func initDS() (*dataSources, error) {
 	_, err = rdb.Ping(context.Background()).Result()
 
 	if err != nil {
-		return nil, fmt.Errorf("Failed to connect with Redis: %w", err)
+		return nil, fmt.Errorf("failed to connect to Redis: %w", err)
 	}
 
 	accessKey := os.Getenv("AWS_ACCESS_KEY")
@@ -84,12 +85,12 @@ func initDS() (*dataSources, error) {
 			Endpoint:         aws.String("https://spaces-s3.services.xoniaapp.com/"),
 			DisableSSL:       aws.Bool(false),
 			S3ForcePathStyle: aws.Bool(true),
-			Region: aws.String(region),
+			Region:           aws.String(region),
 		},
 	)
 
 	if err != nil {
-		return nil, fmt.Errorf("Error making S3 session: %w", err)
+		return nil, fmt.Errorf("error making S3 session: %w", err)
 	}
 
 	return &dataSources{
@@ -101,9 +102,10 @@ func initDS() (*dataSources, error) {
 
 func (d *dataSources) close() error {
 	if err := d.RedisClient.Close(); err != nil {
-		return fmt.Errorf("Error with Redis Client: %w", err)
+		return fmt.Errorf("error connecting with Redis Client: %w", err)
 	}
 
 	return nil
 }
+
 // data

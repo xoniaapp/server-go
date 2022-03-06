@@ -10,6 +10,7 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -25,12 +26,15 @@ import (
 func main() {
 	log.Println("STARTING SERVER...")
 
-	// TODO: Set gin.Mode() to release by default.
-	if gin.Mode() != gin.ReleaseMode {
-		err := godotenv.Load()
-		if err != nil {
-			log.Fatalln("FAILED TO LOAD ENVIRONMENT VARIABLES!")
-		}
+	// TODO: gin.SetMode(gin.ReleaseMode)
+	// if gin.Mode() != gin.ReleaseMode {
+	// }
+
+	gin.SetMode(gin.ReleaseMode)
+	err := godotenv.Load()
+
+	if err != nil {
+		log.Fatalln("FAILED TO LOAD ENVIRONMENT VARIABLES!")
 	}
 
 	ds, err := initDS()

@@ -15,6 +15,7 @@ import (
 	"os"
 	"strconv"
 	"time"
+
 	"github.com/aelpxy/xoniaapp/handler"
 	"github.com/aelpxy/xoniaapp/handler/middleware"
 	"github.com/aelpxy/xoniaapp/model"
@@ -115,7 +116,7 @@ func inject(d *dataSources) (*gin.Engine, error) {
 	maxBodyBytes := os.Getenv("MAX_BODY_BYTES")
 	mbb, err := strconv.ParseInt(maxBodyBytes, 0, 64)
 	if err != nil {
-		return nil, fmt.Errorf("Could not parse MAX_BODY_BYTES as int: %w", err)
+		return nil, fmt.Errorf("could not parse MAX_BODY_BYTES as int: %w", err)
 	}
 
 	rate := limiter.Rate{
