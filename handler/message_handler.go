@@ -1,17 +1,18 @@
 package handler
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	validation "github.com/go-ozzo/ozzo-validation/v4"
-	gonanoid "github.com/matoous/go-nanoid"
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
+	// validation "github.com/go-ozzo/ozzo-validation/v4"
+	// gonanoid "github.com/matoous/go-nanoid"
 	"log"
 	"mime/multipart"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/aelpxy/xoniaapp/model"
+	"github.com/aelpxy/xoniaapp/model/apperrors"
 )
 
 /*
@@ -181,14 +182,13 @@ func (h *Handler) CreateMessage(c *gin.Context) {
 		// Remove the if part if you do want upload
 		var attachment *model.Attachment
 		if gin.Mode() == gin.ReleaseMode {
-			id, _ := gonanoid.Nanoid(20)
+			attachment, err = h.messageService.UploadFile(req.File, channel.ID)
 
-			// Random image to test files in the app
-			attachment = &model.Attachment{
-				ID:       id,
-				Url:      fmt.Sprintf("https://picsum.photos/seed/%s/600", id),
-				FileType: "image/jpeg",
-				Filename: id,
+			if err != nil {
+				c.JSON(apperrors.Status(err), gin.H{
+					"error": err,
+				})
+				return
 			}
 		} else {
 			attachment, err = h.messageService.UploadFile(req.File, channel.ID)
