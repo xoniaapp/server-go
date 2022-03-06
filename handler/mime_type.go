@@ -16,6 +16,12 @@ func isAllowedImageType(mimeType string) bool {
 }
 
 var validFileTypes = map[string]bool{
+	"image/jpg":                   true,
+	"image/vnd.microsoft.icon":    true,
+	"image/gif":                   true,
+	"image/jpeg":                  true,
+	"image/png":                   true,
+	"image/svg":                   true,
 	"audio/mp3":                   true,
 	"audio/mpeg":                  true,
 	"audio/opus":                  true,
