@@ -6,6 +6,7 @@ var validImageTypes = map[string]bool{
 	"image/gif":                true,
 	"image/jpeg":               true,
 	"image/png":                true,
+	"image/svg":                true,
 }
 
 func isAllowedImageType(mimeType string) bool {
