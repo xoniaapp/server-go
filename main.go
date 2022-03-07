@@ -1,4 +1,4 @@
-// @GPL-3.0 License
+// @AGPL-3.0 License
 
 package main
 
@@ -14,14 +14,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
-
-// @title Xonia API
-// @version 2.2.0
-// @description Xonia REST API
-
-// @license.name GNUv3
-// @host gateway.xoniaapp.com
-// @BasePath /api
 
 func main() {
 	log.Println("STARTING SERVER...")
@@ -74,7 +66,7 @@ func main() {
 	if err := ds.close(); err != nil {
 		log.Fatalf("ERR OCCURED: %v\n", err)
 	}
-
+	// force shutdown
 	log.Println("SHUTTING DOWN SERVER...")
 	if err := srv.Shutdown(ctx); err != nil {
 		log.Fatalf("SERVER FORCED TO SHUT DOWN: %v\n", err)
