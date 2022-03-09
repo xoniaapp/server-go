@@ -129,8 +129,16 @@ func inject(d *dataSources) (*gin.Engine, error) {
 	})
 	go hub.Run()
 
+	// websocket route
 	router.GET("/ws", middleware.AuthUser(), func(c *gin.Context) {
 		ws.ServeWs(hub, c)
+	})
+
+	// health route
+	router.GET("/health", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"status": "online",
+		})
 	})
 
 	socketService := service.NewSocketService(&service.SSConfig{

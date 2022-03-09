@@ -10,7 +10,6 @@ import (
 	"github.com/aelpxy/xoniaapp/model"
 	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"github.com/gin-contrib/sessions"
-	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 )
 
@@ -52,8 +51,6 @@ func NewHandler(c *Config) {
 			"error": "No route found.",
 		})
 	})
-
-	c.R.Use(static.Serve("/", static.LocalFile("./public", true)))
 
 	if gin.Mode() != gin.TestMode {
 		c.R.Use(middleware.Timeout(c.TimeoutDuration, apperrors.NewServiceUnavailable()))
