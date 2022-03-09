@@ -4,17 +4,14 @@ import (
 	"log"
 	"net/http"
 
-	_ "github.com/aelpxy/xoniaapp/docs"
+	"time"
+
 	"github.com/aelpxy/xoniaapp/handler/middleware"
 	"github.com/aelpxy/xoniaapp/model"
 	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
-
-	// "github.com/swaggo/files"
-	// "github.com/swaggo/gin-swagger"
-	"time"
 )
 
 type Handler struct {
@@ -62,7 +59,6 @@ func NewHandler(c *Config) {
 		c.R.Use(middleware.Timeout(c.TimeoutDuration, apperrors.NewServiceUnavailable()))
 	}
 
-	// c.R.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	ag := c.R.Group("api/account")
 	ag.POST("/register", h.Register)
 	ag.POST("/login", h.Login)
