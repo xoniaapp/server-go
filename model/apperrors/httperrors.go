@@ -68,7 +68,7 @@ func NewAuthorization(reason string) *Error {
 func NewBadRequest(reason string) *Error {
 	return &Error{
 		Type:    BadRequest,
-		Message: fmt.Sprintf("Bad request. Reason: %v", reason),
+		Message: fmt.Sprintf("ERR: %v", reason),
 	}
 }
 
