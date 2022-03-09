@@ -1,9 +1,10 @@
 package service
 
 import (
-	"github.com/bwmarrin/snowflake"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"log"
+
+	"github.com/aelpxy/xoniaapp/model/apperrors"
+	"github.com/bwmarrin/snowflake"
 )
 
 func GenerateId() (string, error) {
@@ -12,8 +13,6 @@ func GenerateId() (string, error) {
 		log.Printf("Failed to genenerate an snowflake id: %v\n", err.Error())
 		return "", apperrors.NewInternal()
 	}
-
 	id := node.Generate()
-
 	return id.String(), nil
 }

@@ -2,12 +2,13 @@ package repository
 
 import (
 	"errors"
+	"log"
+	"time"
+
 	"github.com/aelpxy/xoniaapp/model"
 	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
-	"log"
-	"time"
 )
 
 type guildRepository struct {

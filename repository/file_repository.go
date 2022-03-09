@@ -3,21 +3,22 @@ package repository
 import (
 	"bytes"
 	"fmt"
+	"image"
+	"image/jpeg"
+	"log"
+
+	"github.com/aelpxy/xoniaapp/model"
+	"github.com/aelpxy/xoniaapp/model/apperrors"
+	"github.com/aelpxy/xoniaapp/service"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/disintegration/imaging"
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
-	"github.com/aelpxy/xoniaapp/service"
-	"image"
-	"image/jpeg"
-	"log"
 
+	_ "image/gif"
 	_ "image/jpeg"
 	_ "image/png"
-	_ "image/gif"
 
 	"mime/multipart"
 )

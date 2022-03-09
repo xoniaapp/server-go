@@ -5,11 +5,12 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"log"
 	"mime/multipart"
 	"strings"
+
+	"github.com/aelpxy/xoniaapp/model"
+	"github.com/aelpxy/xoniaapp/model/apperrors"
 )
 
 // UserService acts as a struct for injecting an implementation of UserRepository
@@ -197,8 +198,8 @@ func (s *userService) GetRequestCount(userId string) (*int64, error) {
 	return s.UserRepository.GetRequestCount(userId)
 }
 
-// generateAvatar returns a gravatar using the md5 hash of the email
+// generateAvatar returns a dicebear avatar using the md5 hash of the email
 func generateAvatar(email string) string {
 	hash := md5.Sum([]byte(email))
-	return fmt.Sprintf("https://gravatar.com/avatar/%s?d=identicon", hex.EncodeToString(hash[:]))
+	return fmt.Sprintf("https://avatars.dicebear.com/api/identicon/%s.png", hex.EncodeToString(hash[:]))
 }

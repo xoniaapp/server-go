@@ -70,8 +70,8 @@ func RandStr(n int) string {
 	return RandStringRunes(n)
 }
 
-// generateAvatar returns an gravatar using the md5 hash of the email
+// generateAvatar returns an dicebear avatar using the md5 hash of the email
 func generateAvatar(email string) string {
 	hash := md5.Sum([]byte(email))
-	return fmt.Sprintf("https://gravatar.com/avatar/%s?d=identicon", hex.EncodeToString(hash[:]))
+	return fmt.Sprintf("https://avatars.dicebear.com/api/identicon/%s.png", hex.EncodeToString(hash[:]))
 }

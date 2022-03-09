@@ -5,18 +5,16 @@ import (
 	"log"
 	"net/http"
 	"time"
+
 	"github.com/aelpxy/xoniaapp/model"
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 )
 
 const (
-	writeWait = 10 * time.Second
-
-	pongWait = 60 * time.Second
-
-	pingPeriod = (pongWait * 9) / 10
-
+	writeWait      = 10 * time.Second
+	pongWait       = 60 * time.Second
+	pingPeriod     = (pongWait * 9) / 10
 	maxMessageSize = 10000
 )
 
@@ -54,9 +52,7 @@ func (client *Client) readPump() {
 	}()
 
 	client.conn.SetReadLimit(maxMessageSize)
-
 	_ = client.conn.SetReadDeadline(time.Now().Add(pongWait))
-
 	client.conn.SetPongHandler(func(string) error {
 		_ = client.conn.SetReadDeadline(time.Now().Add(pongWait))
 		return nil

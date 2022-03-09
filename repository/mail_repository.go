@@ -3,6 +3,7 @@ package repository
 import (
 	"fmt"
 	"net/smtp"
+
 	"github.com/aelpxy/xoniaapp/model"
 )
 
@@ -33,4 +34,3 @@ func (m *mailRepository) SendResetMail(email string, token string) error {
 
 	return err
 }
-// TODO: Use ENV

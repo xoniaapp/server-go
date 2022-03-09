@@ -2,11 +2,12 @@ package repository
 
 import (
 	"database/sql"
+	"log"
+	"time"
+
 	"github.com/aelpxy/xoniaapp/model"
 	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"gorm.io/gorm"
-	"log"
-	"time"
 )
 
 type channelRepository struct {

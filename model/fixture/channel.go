@@ -1,8 +1,9 @@
 package fixture
 
 import (
-	"github.com/aelpxy/xoniaapp/model"
 	"time"
+
+	"github.com/aelpxy/xoniaapp/model"
 )
 
 // GetMockChannel returns a mock channel. If guildId is not empty it will set GuildID to that id.

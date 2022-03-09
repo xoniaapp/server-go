@@ -4,12 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/go-redis/redis/v8"
-	gonanoid "github.com/matoous/go-nanoid/v2"
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"log"
 	"time"
+
+	"github.com/aelpxy/xoniaapp/model"
+	"github.com/aelpxy/xoniaapp/model/apperrors"
+	"github.com/go-redis/redis/v8"
+	gonanoid "github.com/matoous/go-nanoid/v2"
 )
 
 type redisRepository struct {
