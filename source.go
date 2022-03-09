@@ -25,7 +25,7 @@ func initDS() (*dataSources, error) {
 	log.Printf("Starting Server...\n")
 	dbUrl := os.Getenv("DATABASE_URL")
 
-	log.Printf("Connecting to PostgreSQL\n")
+	log.Printf("Connecting to PostgreSQL... \n")
 	db, err := gorm.Open(postgres.Open(dbUrl))
 
 	if err != nil {
