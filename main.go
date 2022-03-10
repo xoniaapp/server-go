@@ -1,5 +1,3 @@
-// @AGPL-3.0 License
-
 package main
 
 import (
@@ -16,11 +14,7 @@ import (
 )
 
 func main() {
-	log.Println("STARTING SERVER...")
-
-	// TODO: gin.SetMode(gin.ReleaseMode)
-	// if gin.Mode() != gin.ReleaseMode {
-	// }
+	log.Println("Starting...")
 
 	gin.SetMode(gin.ReleaseMode)
 	err := godotenv.Load()
@@ -66,7 +60,7 @@ func main() {
 	if err := ds.close(); err != nil {
 		log.Fatalf("ERR OCCURED: %v\n", err)
 	}
-	// force shutdown
+
 	log.Println("SHUTTING DOWN SERVER...")
 	if err := srv.Shutdown(ctx); err != nil {
 		log.Fatalf("SERVER FORCED TO SHUT DOWN: %v\n", err)
