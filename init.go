@@ -66,7 +66,8 @@ func initDS() (*dataSources, error) {
 	accessKey := os.Getenv("AWS_ACCESS_KEY")
 	secretKey := os.Getenv("AWS_SECRET_ACCESS_KEY")
 	region := os.Getenv("AWS_S3_REGION")
-	// TODO: Make the AWS Endpoint a env var
+	// endpointURL := os.Getenv("AWS_S3_URL")
+
 	sess, err := session.NewSession(
 		&aws.Config{
 			Credentials: credentials.NewStaticCredentials(
@@ -82,7 +83,7 @@ func initDS() (*dataSources, error) {
 	)
 
 	if err != nil {
-		return nil, fmt.Errorf("error making S3 session: %w", err)
+		return nil, fmt.Errorf("error with S3 session: %w", err)
 	}
 
 	return &dataSources{
