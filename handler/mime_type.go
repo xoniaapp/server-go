@@ -1,12 +1,11 @@
 package handler
 
 var validImageTypes = map[string]bool{
-	"image/jpg":                true,
-	"image/vnd.microsoft.icon": true,
-	"image/gif":                true,
-	"image/jpeg":               true,
-	"image/png":                true,
-	"image/svg":                true,
+	"image/jpg":  true,
+	"image/gif":  true,
+	"image/jpeg": true,
+	"image/png":  true,
+	"image/svg":  true,
 }
 
 func isAllowedImageType(mimeType string) bool {
@@ -38,6 +37,7 @@ var validFileTypes = map[string]bool{
 	"application/x-bzip":          true,
 	"application/x-bzip2":         true,
 	"application/octet-stream":    true,
+	"application/x-binary":        true,
 }
 
 func isAllowedFileType(mimeType string) bool {
