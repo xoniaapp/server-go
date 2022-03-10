@@ -1,14 +1,13 @@
 package middleware
 
 import (
+	"log"
+
+	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
-	"log"
 )
 
-// AuthUser checks if the request contains a valid session
-// and saves the session's userId in the context
 func AuthUser() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		session := sessions.Default(c)
@@ -27,7 +26,6 @@ func AuthUser() gin.HandlerFunc {
 
 		c.Set("userId", userId)
 
-		// Recreate session to extend its lifetime
 		session.Set("userId", id)
 		if err := session.Save(); err != nil {
 			log.Printf("Failed recreate the session: %v\n", err.Error())
