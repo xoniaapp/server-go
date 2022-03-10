@@ -3,7 +3,7 @@ module github.com/aelpxy/xoniaapp
 go 1.17
 
 require (
-	github.com/aws/aws-sdk-go v1.43.14
+	github.com/aws/aws-sdk-go v1.43.15
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/disintegration/imaging v1.6.2
 	github.com/gin-contrib/sessions v0.0.4
@@ -56,7 +56,7 @@ require (
 	github.com/rs/cors v1.8.2 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	golang.org/x/image v0.0.0-20220302094943-723b81ca9867 // indirect
-	golang.org/x/sys v0.0.0-20220307203707-22a9840ba4d7 // indirect
+	golang.org/x/sys v0.0.0-20220310020820-b874c991c1a5 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
