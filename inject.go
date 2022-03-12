@@ -90,7 +90,7 @@ func inject(d *dataSources) (*gin.Engine, error) {
 
 	store.Options(sessions.Options{
 		Domain:   domain,
-		MaxAge:   60 * 60 * 24 * 7,
+		MaxAge:   60 * 60 * 24 * 7, // 7 Days
 		Secure:   gin.Mode() == gin.ReleaseMode,
 		HttpOnly: true,
 		Path:     "/",
