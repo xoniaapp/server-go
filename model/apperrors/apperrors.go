@@ -1,6 +1,5 @@
 package apperrors
 
-// Guild Errors
 const (
 	NotAMember             = "Not a member of the Server"
 	AlreadyMember          = "Already a member of the Server"
@@ -22,7 +21,6 @@ const (
 	DMYourselfError        = "You cannot dm yourself"
 )
 
-// Account Errors
 const (
 	InvalidOldPassword  = "Invalid old password"
 	InvalidCredentials  = "Invalid email and password combination"
@@ -31,7 +29,6 @@ const (
 	InvalidResetToken   = "Invalid reset token"
 )
 
-// Friend Errors
 const (
 	AddYourselfError    = "You cannot add yourself"
 	RemoveYourselfError = "You cannot remove yourself"
@@ -42,14 +39,12 @@ const (
 	UnableAcceptError   = "Unable to accept the request. Try again later"
 )
 
-// Generic Errors
 const (
 	InvalidSession = "Provided session is invalid"
 	ServerError    = "Something went wrong. Try again later"
 	Unauthorized   = "Not Authorized"
 )
 
-// Message Errors
 const (
 	MessageOrFileRequired = "Either a message or a file is required"
 	EditMessageError      = "Only the author can edit the message"
