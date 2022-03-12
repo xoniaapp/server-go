@@ -3,7 +3,7 @@ module github.com/aelpxy/xoniaapp
 go 1.17
 
 require (
-	github.com/aws/aws-sdk-go v1.43.15
+	github.com/aws/aws-sdk-go v1.43.17
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/disintegration/imaging v1.6.2
 	github.com/gin-contrib/sessions v0.0.4
@@ -17,7 +17,7 @@ require (
 	github.com/matoous/go-nanoid/v2 v2.0.0
 	github.com/rs/cors/wrapper/gin v0.0.0-20220223021805-a4a5ce87d5a2
 	github.com/ulule/limiter/v3 v3.9.0
-	golang.org/x/crypto v0.0.0-20220307211146-efcb8507fb70
+	golang.org/x/crypto v0.0.0-20220312131142-6068a2e6cfdc
 	gorm.io/driver/postgres v1.3.1
 	gorm.io/gorm v1.23.2
 )
