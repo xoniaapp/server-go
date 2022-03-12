@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"image"
-	"image/jpeg"
 	"log"
 
 	"github.com/aelpxy/xoniaapp/model"
@@ -17,6 +16,7 @@ import (
 	"github.com/disintegration/imaging"
 
 	_ "image/gif"
+	"image/jpeg"
 	_ "image/jpeg"
 	_ "image/png"
 
