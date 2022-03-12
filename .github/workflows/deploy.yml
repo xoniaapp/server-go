@@ -23,4 +23,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          pm2 status
+          apt install wget git curl neofetch htop -y
+          whoami
+          neofetch
+          ls -a
