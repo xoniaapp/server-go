@@ -21,4 +21,4 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-        pm2 status
+          pm2 status
