@@ -10,7 +10,7 @@ import (
 func GenerateId() (string, error) {
 	node, err := snowflake.NewNode(1)
 	if err != nil {
-		log.Printf("Failed to genenerate an snowflake id: %v\n", err.Error())
+		log.Printf("failed to generate id: %v\n", err.Error())
 		return "", apperrors.NewInternal()
 	}
 	id := node.Generate()
