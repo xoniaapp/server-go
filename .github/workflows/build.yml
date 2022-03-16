@@ -1,23 +1,24 @@
-name: Build Job
+# .github/workflows/release.yaml
+name: Build and Release
 
 on:
   release:
+    types: [created]
 
 jobs:
   releases-matrix:
-    name: Build
+    name: Release Go Binary
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        goos: [linux]
-        goarch: [amd64, arm, arm64]
+        goos: [linux, windows, darwin]
+        goarch: [amd64, arm64]
     steps:
-      - uses: actions/checkout@v2
-      - uses: wangyoucao577/go-release-action@v1.25
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          goos: ${{ matrix.goos }}
-          goarch: ${{ matrix.goarch }}
-          md5sum: false
-          binary_name: 'xoniaapp'
-          extra_files: LICENSE
+    - uses: actions/checkout@v2
+    - uses: wangyoucao577/go-release-action@v1.25
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        goos: ${{ matrix.goos }}
+        goarch: ${{ matrix.goarch }}
+        binary_name: "xoniaapp"
+        extra_files: LICENSE
