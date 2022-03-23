@@ -2,7 +2,10 @@ name: Lint
 
 on:
   push:
-
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
 jobs:
   golangci:
     name: lint
