@@ -66,4 +66,5 @@ func main() {
 	if err := srv.Shutdown(ctx); err != nil {
 		log.Fatalf("SERVER FORCED TO SHUT DOWN: %v\n", err)
 	}
+	// TODO: Use Sentry.
 }
