@@ -66,7 +66,7 @@ func initDS() (*dataSources, error) {
 	accessKey := os.Getenv("AWS_ACCESS_KEY")
 	secretKey := os.Getenv("AWS_SECRET_ACCESS_KEY")
 	region := os.Getenv("AWS_S3_REGION")
-	// endpointURL := os.Getenv("AWS_S3_URL")
+	endpointURL := os.Getenv("AWS_S3_URL")
 
 	sess, err := session.NewSession(
 		&aws.Config{
@@ -75,7 +75,7 @@ func initDS() (*dataSources, error) {
 				secretKey,
 				"",
 			),
-			Endpoint:         aws.String("https://spaces-s3.services.xoniaapp.com/"),
+			Endpoint:         aws.String(endpointURL),
 			DisableSSL:       aws.Bool(false),
 			S3ForcePathStyle: aws.Bool(true),
 			Region:           aws.String(region),
