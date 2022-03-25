@@ -3,7 +3,7 @@ module github.com/aelpxy/xoniaapp
 go 1.17
 
 require (
-	github.com/aws/aws-sdk-go v1.43.23
+	github.com/aws/aws-sdk-go v1.43.25
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/disintegration/imaging v1.6.2
 	github.com/gin-contrib/sessions v0.0.4
