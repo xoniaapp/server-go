@@ -14,7 +14,6 @@ func isAllowedImageType(mimeType string) bool {
 	return exists
 }
 
-// TODO: Add more MIME Types
 var validFileTypes = map[string]bool{
 	"image/jpg":                   true,
 	"image/vnd.microsoft.icon":    true,
@@ -39,6 +38,7 @@ var validFileTypes = map[string]bool{
 	"application/x-bzip2":         true,
 	"application/octet-stream":    true,
 	"application/x-binary":        true,
+	"application/*":       	       true,
 }
 
 func isAllowedFileType(mimeType string) bool {
