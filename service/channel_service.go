@@ -5,22 +5,16 @@ import (
 	"github.com/aelpxy/xoniaapp/model/apperrors"
 )
 
-// channelService acts as a struct for injecting an implementation of ChannelRepository
-// for use in service methods
 type channelService struct {
 	ChannelRepository model.ChannelRepository
 	GuildRepository   model.GuildRepository
 }
 
-// CSConfig will hold repositories that will eventually be injected into
-// this service layer
 type CSConfig struct {
 	ChannelRepository model.ChannelRepository
 	GuildRepository   model.GuildRepository
 }
 
-// NewChannelService is a factory function for
-// initializing a ChannelService with its repository layer dependencies
 func NewChannelService(c *CSConfig) model.ChannelService {
 	return &channelService{
 		ChannelRepository: c.ChannelRepository,
@@ -113,12 +107,8 @@ func (c *channelService) GetDMByUserAndChannel(userId string, channelId string) 
 	return c.ChannelRepository.FindDMByUserAndChannelId(channelId, userId)
 }
 
-// IsChannelMember checks if the user has access to the given channel.
-// Returns an error if they do not, otherwise nil
 func (c *channelService) IsChannelMember(channel *model.Channel, userId string) error {
-	// Check if user has access to the channel if it's private
 	if !channel.IsPublic {
-		// Channel is DM -> Check if one of the members
 		if channel.IsDM {
 			id, err := c.ChannelRepository.FindDMByUserAndChannelId(channel.ID, userId)
 
@@ -127,7 +117,6 @@ func (c *channelService) IsChannelMember(channel *model.Channel, userId string) 
 			}
 			return nil
 		}
-		// Channel is private
 		for _, member := range channel.PCMembers {
 			if member.ID == userId {
 				return nil
@@ -135,8 +124,6 @@ func (c *channelService) IsChannelMember(channel *model.Channel, userId string) 
 		}
 		return apperrors.NewAuthorization(apperrors.Unauthorized)
 	}
-
-	// Check if user has access to the channel
 	member, err := c.GuildRepository.GetMember(userId, *channel.GuildID)
 	if err != nil || member.ID == "" {
 		return apperrors.NewAuthorization(apperrors.Unauthorized)
