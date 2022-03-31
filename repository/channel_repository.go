@@ -60,6 +60,7 @@ func (r *channelRepository) Get(userId string, guildId string) (*[]model.Channel
 	return &channels, result.Error
 }
 
+// DM Query
 type dmQuery struct {
 	ChannelId string
 	Id        string
