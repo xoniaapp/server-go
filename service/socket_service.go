@@ -2,9 +2,10 @@ package service
 
 import (
 	"encoding/json"
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/ws"
 	"log"
+
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/ws"
 )
 
 type socketService struct {

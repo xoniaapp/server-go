@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/smtp"
 
-	"github.com/aelpxy/xoniaapp/model"
+	"github.com/xoniaapp/server/model"
 )
 
 type mailRepository struct {

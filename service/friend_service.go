@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/aelpxy/xoniaapp/model"
+	"github.com/xoniaapp/server/model"
 )
 
 // friendService acts as a struct for injecting an implementation of UserRepository

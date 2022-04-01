@@ -2,14 +2,15 @@ package service
 
 import (
 	"fmt"
-	gonanoid "github.com/matoous/go-nanoid"
-	"github.com/aelpxy/xoniaapp/model"
 	"log"
 	"mime/multipart"
 	"path"
 	"path/filepath"
 	"regexp"
 	"strings"
+
+	gonanoid "github.com/matoous/go-nanoid"
+	"github.com/xoniaapp/server/model"
 )
 
 type messageService struct {

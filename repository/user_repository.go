@@ -6,8 +6,8 @@ import (
 	"log"
 	"regexp"
 
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/model/apperrors"
 	"gorm.io/gorm"
 )
 
@@ -47,7 +47,6 @@ func (r *userRepository) Create(user *model.User) (*model.User, error) {
 	return user, nil
 }
 
-
 func (r *userRepository) FindByEmail(email string) (*model.User, error) {
 	user := &model.User{}
 
@@ -61,11 +60,9 @@ func (r *userRepository) FindByEmail(email string) (*model.User, error) {
 	return user, nil
 }
 
-
 func (r *userRepository) Update(user *model.User) error {
 	return r.DB.Save(&user).Error
 }
-
 
 func (r *userRepository) GetFriendAndGuildIds(userId string) (*[]string, error) {
 	var ids []string

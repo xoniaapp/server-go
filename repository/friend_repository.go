@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"errors"
 
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/model/apperrors"
 	"gorm.io/gorm"
 )
 

@@ -1,11 +1,12 @@
 package handler
 
 import (
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"net/http"
 	"strings"
+
 	"github.com/gin-gonic/gin"
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/model/apperrors"
 )
 
 type Request interface {

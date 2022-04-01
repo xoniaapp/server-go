@@ -9,8 +9,8 @@ import (
 	"mime/multipart"
 	"strings"
 
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/model/apperrors"
 )
 
 // UserService acts as a struct for injecting an implementation of UserRepository

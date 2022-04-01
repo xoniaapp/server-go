@@ -8,12 +8,6 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/aelpxy/xoniaapp/handler"
-	"github.com/aelpxy/xoniaapp/handler/middleware"
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/repository"
-	"github.com/aelpxy/xoniaapp/service"
-	"github.com/aelpxy/xoniaapp/ws"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
@@ -21,6 +15,12 @@ import (
 	"github.com/ulule/limiter/v3"
 	mgin "github.com/ulule/limiter/v3/drivers/middleware/gin"
 	sredis "github.com/ulule/limiter/v3/drivers/store/redis"
+	"github.com/xoniaapp/server/handler"
+	"github.com/xoniaapp/server/handler/middleware"
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/repository"
+	"github.com/xoniaapp/server/service"
+	"github.com/xoniaapp/server/ws"
 )
 
 func inject(d *dataSources) (*gin.Engine, error) {

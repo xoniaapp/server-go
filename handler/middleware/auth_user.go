@@ -3,9 +3,9 @@ package middleware
 import (
 	"log"
 
-	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/xoniaapp/server/model/apperrors"
 )
 
 func AuthUser() gin.HandlerFunc {

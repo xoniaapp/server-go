@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	"github.com/aelpxy/xoniaapp/model"
 	gonanoid "github.com/matoous/go-nanoid"
+	"github.com/xoniaapp/server/model"
 )
 
 type guildService struct {

@@ -3,8 +3,9 @@ package ws
 import (
 	"context"
 	"log"
-	"github.com/aelpxy/xoniaapp/model"
+
 	"github.com/go-redis/redis/v8"
+	"github.com/xoniaapp/server/model"
 )
 
 type Room struct {

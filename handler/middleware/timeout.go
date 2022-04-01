@@ -5,11 +5,12 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"net/http"
 	"sync"
 	"time"
+
 	"github.com/gin-gonic/gin"
+	"github.com/xoniaapp/server/model/apperrors"
 )
 
 func Timeout(timeout time.Duration, errTimeout *apperrors.Error) gin.HandlerFunc {
@@ -22,8 +23,8 @@ func Timeout(timeout time.Duration, errTimeout *apperrors.Error) gin.HandlerFunc
 
 		c.Request = c.Request.WithContext(ctx)
 
-		finished := make(chan struct{})        
-		panicChan := make(chan interface{}, 1) 
+		finished := make(chan struct{})
+		panicChan := make(chan interface{}, 1)
 
 		go func() {
 			defer func() {
@@ -32,7 +33,7 @@ func Timeout(timeout time.Duration, errTimeout *apperrors.Error) gin.HandlerFunc
 				}
 			}()
 
-			c.Next() 
+			c.Next()
 			finished <- struct{}{}
 		}()
 
@@ -67,6 +68,7 @@ func Timeout(timeout time.Duration, errTimeout *apperrors.Error) gin.HandlerFunc
 		}
 	}
 }
+
 type timeoutWriter struct {
 	gin.ResponseWriter
 	h    http.Header
@@ -77,6 +79,7 @@ type timeoutWriter struct {
 	wroteHeader bool
 	code        int
 }
+
 func (tw *timeoutWriter) Write(b []byte) (int, error) {
 	tw.mu.Lock()
 	defer tw.mu.Unlock()
@@ -111,4 +114,5 @@ func checkWriteHeaderCode(code int) {
 		panic(fmt.Sprintf("invalid WriteHeader code %v", code))
 	}
 }
+
 // LICENSE@GNUv3

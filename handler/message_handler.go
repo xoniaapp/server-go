@@ -1,16 +1,17 @@
 package handler
 
 import (
-	"github.com/gin-gonic/gin"
-	validation "github.com/go-ozzo/ozzo-validation/v4"
 	"log"
 	"mime/multipart"
 	"net/http"
 	"strings"
 	"time"
 
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
+	"github.com/gin-gonic/gin"
+	validation "github.com/go-ozzo/ozzo-validation/v4"
+
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/model/apperrors"
 )
 
 /*

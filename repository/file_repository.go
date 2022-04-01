@@ -6,14 +6,14 @@ import (
 	"image"
 	"log"
 
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
-	"github.com/aelpxy/xoniaapp/service"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/disintegration/imaging"
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/model/apperrors"
+	"github.com/xoniaapp/server/service"
 
 	_ "image/gif"
 	"image/jpeg"

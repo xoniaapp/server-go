@@ -1,8 +1,8 @@
 package ws
 
 import (
-	"github.com/aelpxy/xoniaapp/model"
 	"github.com/go-redis/redis/v8"
+	"github.com/xoniaapp/server/model"
 )
 
 type Hub struct {

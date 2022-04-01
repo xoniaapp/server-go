@@ -3,8 +3,8 @@ package service
 import (
 	"log"
 
-	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"github.com/bwmarrin/snowflake"
+	"github.com/xoniaapp/server/model/apperrors"
 )
 
 func GenerateId() (string, error) {

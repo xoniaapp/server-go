@@ -1,4 +1,4 @@
-module github.com/aelpxy/xoniaapp
+module github.com/xoniaapp/server
 
 go 1.17
 

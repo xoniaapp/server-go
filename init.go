@@ -6,11 +6,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/aelpxy/xoniaapp/model"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/go-redis/redis/v8"
+	"github.com/xoniaapp/server/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

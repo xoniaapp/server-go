@@ -6,11 +6,11 @@ import (
 
 	"time"
 
-	"github.com/aelpxy/xoniaapp/handler/middleware"
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/xoniaapp/server/handler/middleware"
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/model/apperrors"
 )
 
 type Handler struct {

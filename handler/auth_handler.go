@@ -1,15 +1,16 @@
 package handler
 
 import (
+	"log"
+	"net/http"
+	"strings"
+
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	validation "github.com/go-ozzo/ozzo-validation/v4"
 	"github.com/go-ozzo/ozzo-validation/v4/is"
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
-	"log"
-	"net/http"
-	"strings"
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/model/apperrors"
 )
 
 /*
@@ -17,7 +18,7 @@ import (
  */
 
 type registerReq struct {
-	Email string `json:"email"`
+	Email    string `json:"email"`
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
@@ -184,8 +185,8 @@ func (h *Handler) ForgotPassword(c *gin.Context) {
 }
 
 type resetRequest struct {
-	Token string `json:"token"`
-	Password string `json:"newPassword"`
+	Token           string `json:"token"`
+	Password        string `json:"newPassword"`
 	ConfirmPassword string `json:"confirmNewPassword"`
 } //@name ResetPasswordRequest
 

@@ -7,10 +7,10 @@ import (
 	"log"
 	"time"
 
-	"github.com/aelpxy/xoniaapp/model"
-	"github.com/aelpxy/xoniaapp/model/apperrors"
 	"github.com/go-redis/redis/v8"
 	gonanoid "github.com/matoous/go-nanoid/v2"
+	"github.com/xoniaapp/server/model"
+	"github.com/xoniaapp/server/model/apperrors"
 )
 
 type redisRepository struct {

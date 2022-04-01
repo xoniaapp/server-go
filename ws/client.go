@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/aelpxy/xoniaapp/model"
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
+	"github.com/xoniaapp/server/model"
 )
 
 const (
