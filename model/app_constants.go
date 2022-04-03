@@ -2,7 +2,7 @@ package model
 
 const (
 	MinimumChannels = 1
-	MaximumChannels = 25
-	MaximumGuilds   = 50
-	CookieName      = "xa"
+	MaximumChannels = 50
+	MaximumGuilds   = 100
+	CookieName      = "auth-cookie"
 )
