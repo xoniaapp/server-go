@@ -22,6 +22,7 @@ func NewMessageRepository(db *gorm.DB) model.MessageRepository {
 	}
 }
 
+// TODO: Add embed query
 type messageQuery struct {
 	Id            string
 	Text          *string
