@@ -14,7 +14,7 @@ import (
 )
 
 /*
- * AuthHandler contains all routes related to account actions (/api/account) editing it might break it
+ * AuthHandler contains all routes related to account actions (/api/account) DO NOT EDIT
  */
 
 type registerReq struct {
@@ -72,11 +72,9 @@ func (h *Handler) Register(c *gin.Context) {
 }
 
 type loginReq struct {
-	// Must be unique
 	Email string `json:"email"`
-	// Min 6, max 150 characters.
 	Password string `json:"password"`
-} //@name LoginRequest
+}
 
 func (r loginReq) validate() error {
 	return validation.ValidateStruct(&r,
@@ -132,7 +130,7 @@ func (h *Handler) Logout(c *gin.Context) {
 
 type forgotRequest struct {
 	Email string `json:"email"`
-} //@ForgotPasswordRequest
+}
 
 func (r forgotRequest) validate() error {
 	return validation.ValidateStruct(&r,
@@ -145,7 +143,6 @@ func (r *forgotRequest) sanitize() {
 	r.Email = strings.ToLower(r.Email)
 }
 
-// ForgotPassword sends a password reset email to the requested email but it doesn't work right now for some reason. gotta debug that
 func (h *Handler) ForgotPassword(c *gin.Context) {
 	var req forgotRequest
 	if valid := bindData(c, &req); !valid {
@@ -213,7 +210,6 @@ func (h *Handler) ResetPassword(c *gin.Context) {
 
 	req.sanitize()
 
-	// Check if passwords match
 	if req.Password != req.ConfirmPassword {
 		toFieldErrorResponse(c, "Password", apperrors.PasswordsDoNotMatch)
 		return
