@@ -54,7 +54,7 @@ func initDS() (*dataSources, error) {
 		panic(err)
 	}
 
-	log.Printf("Connecting to Redis\n")
+	log.Printf("Connecting to Redis... \n")
 	rdb := redis.NewClient(opt)
 
 	_, err = rdb.Ping(context.Background()).Result()
