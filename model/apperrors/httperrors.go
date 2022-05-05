@@ -10,13 +10,13 @@ type Type string
 
 const (
 	Authorization        Type = "AUTHORIZATION"
-	BadRequest           Type = "BADREQUEST"
+	BadRequest           Type = "BAD_REQUEST"
 	Conflict             Type = "CONFLICT"
 	Internal             Type = "INTERNAL"
-	NotFound             Type = "NOTFOUND"
-	PayloadTooLarge      Type = "PAYLOADTOOLARGE"
+	NotFound             Type = "NOT_FOUND"
+	PayloadTooLarge      Type = "PAYLOAD_TOO_LARGE"
 	ServiceUnavailable   Type = "SERVICE_UNAVAILABLE"
-	UnsupportedMediaType Type = "UNSUPPORTEDMEDIATYPE"
+	UnsupportedMediaType Type = "UNSUPPORTED_MEDIA_TYPE"
 )
 
 type Error struct {
