@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	log.Println("Starting...")
+	log.Println("Starting API...")
 
 	gin.SetMode(gin.ReleaseMode)
 	err := godotenv.Load()
