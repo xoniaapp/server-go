@@ -7,7 +7,6 @@ import (
 	"os"
 	"strconv"
 	"time"
-
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
@@ -90,7 +89,7 @@ func inject(d *dataSources) (*gin.Engine, error) {
 
 	store.Options(sessions.Options{
 		Domain:   domain,
-		MaxAge:   60 * 60 * 24 * 7, // 7 Days
+		MaxAge:   60 * 60 * 24 * 7,
 		Secure:   gin.Mode() == gin.ReleaseMode,
 		HttpOnly: true,
 		Path:     "/",
@@ -133,9 +132,9 @@ func inject(d *dataSources) (*gin.Engine, error) {
 		ws.ServeWs(hub, c)
 	})
 
-	router.GET("/health", func(c *gin.Context) {
+	router.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"status": "up",
+			"message": "pong",
 		})
 	})
 
