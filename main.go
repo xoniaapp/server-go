@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	log.Println("Starting API...")
+	log.Println("Starting ...")
 
 	gin.SetMode(gin.ReleaseMode)
 	err := godotenv.Load()
@@ -46,7 +46,7 @@ func main() {
 		}
 	}()
 
-	log.Printf("SERVER STARTED ON PORT %v\n", srv.Addr)
+	log.Printf("Listening on PORT %v\n", srv.Addr)
 
 	quit := make(chan os.Signal, 1)
 
@@ -61,7 +61,7 @@ func main() {
 		log.Fatalf("ERR OCCURED: %v\n", err)
 	}
 
-	log.Println("SHUTTING DOWN SERVER...")
+	log.Println("Shutting down...")
 
 	if err := srv.Shutdown(ctx); err != nil {
 		log.Fatalf("SERVER FORCED TO SHUT DOWN: %v\n", err)
