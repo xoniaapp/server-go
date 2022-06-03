@@ -1,5 +1,6 @@
 package ws
 
+// actions 
 const (
 	JoinUserAction        = "joinUser"
 	JoinGuildAction       = "joinGuild"
@@ -13,6 +14,7 @@ const (
 	GetRequestCountAction = "getRequestCount"
 )
 
+// actions 
 const (
 	NewMessageAction        = "new_message"
 	EditMessageAction       = "edit_message"
