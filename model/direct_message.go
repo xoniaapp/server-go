@@ -1,13 +1,10 @@
 package model
 
-// DirectMessage is the json response of the channel and the other user of the DM.
 type DirectMessage struct {
 	Id   string `json:"id"`
 	User DMUser `json:"user"`
 }
-//DirectMessage
 
-// DMUser is the other member of the DM.
 type DMUser struct {
 	Id       string `json:"id"`
 	Username string `json:"username"`
@@ -15,4 +12,3 @@ type DMUser struct {
 	IsOnline bool   `json:"isOnline"`
 	IsFriend bool   `json:"isFriend"`
 }
-//@name DMOtherUser

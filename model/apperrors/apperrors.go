@@ -5,7 +5,7 @@ const (
 	AlreadyMember          = "Already a member of the Server"
 	GuildLimitReached      = "The server limit is 100"
 	MustBeOwner            = "Must be the owner for that"
-	InvalidImageType       = "imageFile must be 'image/jpeg','image/png' or 'image/gif'"
+	InvalidImageType       = "Invalid image type"
 	MustBeMemberInvite     = "Must be a member to fetch an invite"
 	IsPermanentError       = "isPermanent is not a boolean"
 	InvalidateInvitesError = "Only the owner can invalidate invites"
