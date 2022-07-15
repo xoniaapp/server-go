@@ -194,7 +194,7 @@ func (h *Handler) CreateChannel(c *gin.Context) {
 
 	response := channel.SerializeChannel()
 
-	// Emit the new channel to the guild members
+	// new channel to the guild members
 	if channel.IsPublic {
 		h.socketService.EmitNewChannel(guildId, &response)
 		// Emit to private channel members
@@ -250,7 +250,8 @@ func (h *Handler) PrivateChannelMembers(c *gin.Context) {
 		})
 		return
 	}
-
+	
+	// if guide owner id does not match
 	if guild.OwnerId != userId {
 		e := apperrors.NewAuthorization(apperrors.MustBeOwner)
 		c.JSON(e.Status(), gin.H{
