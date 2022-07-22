@@ -85,7 +85,6 @@ func initDS() (*dataSources, error) {
 	if err != nil {
 		return nil, fmt.Errorf("error with S3 session: %w", err)
 	}
-
 	return &dataSources{
 		DB:          db,
 		RedisClient: rdb,
@@ -97,6 +96,5 @@ func (d *dataSources) close() error {
 	if err := d.RedisClient.Close(); err != nil {
 		return fmt.Errorf("error connecting with Redis Client: %w", err)
 	}
-
 	return nil
 }
