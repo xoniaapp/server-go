@@ -29,7 +29,7 @@ func (m *mailRepository) SendResetMail(email string, token string) error {
 		fmt.Sprintf("<a href=\"%s/reset-password/%s\">Reset Password</a>", m.origin, token)
 
 	err := smtp.SendMail("smtp.eu.sparkpostmail.com:2525",
-		smtp.PlainAuth("", m.username, m.password, "smtp.eu.sparkpostmail.com"),
+		smtp.PlainAuth("", m.username, m.password, "smtp.eu.sparkpostmail.com:2525"),
 		m.username, []string{email}, []byte(msg))
 
 	return err

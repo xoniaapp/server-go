@@ -28,6 +28,7 @@ func (message *WebsocketMessage) Encode() []byte {
 	return encoding
 }
 
+// @SocketService interface
 type SocketService interface {
 	EmitNewMessage(room string, message *MessageResponse)
 	EmitEditMessage(room string, message *MessageResponse)
