@@ -17,7 +17,7 @@ func main() {
 	log.Println("Starting ...")
 
 	gin.SetMode(gin.ReleaseMode)
-	err := godotenv.Load("/root/.env")
+	err := godotenv.Load()
 
 	if err != nil {
 		log.Fatalln("FAILED TO LOAD ENVIRONMENT VARIABLES!")
