@@ -12,20 +12,6 @@ import (
 	"github.com/xoniaapp/server/model/apperrors"
 )
 
-/*
- * ChannelHandler contains all routes related to channel actions (/api/channels)
- */
-
-// GuildChannels returns the given guild's channels
-// GuildChannels godoc
-// @Tags Channels
-// @Summary Get Guild Channels
-// @Produce  json
-// @Param guildId path string true "Guild ID"
-// @Success 200 {array} model.ChannelResponse
-// @Failure 401 {object} model.ErrorResponse
-// @Failure 404 {object} model.ErrorResponse
-// @Router /channels/{guildId} [get]
 func (h *Handler) GuildChannels(c *gin.Context) {
 	guildId := c.Param("id")
 	userId := c.MustGet("userId").(string)
@@ -88,19 +74,6 @@ func (r *channelReq) sanitize() {
 	r.Name = strings.TrimSpace(r.Name)
 }
 
-// CreateChannel creates a channel for the given guild param
-// CreateChannel godoc
-// @Tags Channels
-// @Summary Create Channel
-// @Accepts json
-// @Produce  json
-// @Param guildId path string true "Guild ID"
-// @Success 200 {array} model.ChannelResponse
-// @Failure 400 {object} model.ErrorsResponse
-// @Failure 401 {object} model.ErrorResponse
-// @Failure 404 {object} model.ErrorResponse
-// @Failure 500 {object} model.ErrorResponse
-// @Router /channels/{guildId} [post]
 func (h *Handler) CreateChannel(c *gin.Context) {
 	var req channelReq
 
@@ -134,7 +107,6 @@ func (h *Handler) CreateChannel(c *gin.Context) {
 		return
 	}
 
-	// Check if the server already has 50 channels
 	if len(guild.Channels) >= model.MaximumChannels {
 		e := apperrors.NewBadRequest(apperrors.ChannelLimitError)
 
@@ -154,7 +126,6 @@ func (h *Handler) CreateChannel(c *gin.Context) {
 	if req.IsPublic != nil && !*req.IsPublic {
 		channelParams.IsPublic = false
 
-		// Add the current user to the members if they are not in there
 		if !containsUser(req.Members, userId) {
 			req.Members = append(req.Members, userId)
 		}
@@ -205,17 +176,6 @@ func (h *Handler) CreateChannel(c *gin.Context) {
 	c.JSON(http.StatusCreated, response)
 }
 
-// PrivateChannelMembers returns the ids of all members
-// that are part of the channel
-// PrivateChannelMembers godoc
-// @Tags Channels
-// @Summary Get Members of the given Channel
-// @Produce  json
-// @Param channelId path string true "Channel ID"
-// @Success 200 {array} string
-// @Failure 401 {object} model.ErrorResponse
-// @Failure 404 {object} model.ErrorResponse
-// @Router /channels/{channelId}/members [get]
 func (h *Handler) PrivateChannelMembers(c *gin.Context) {
 	channelId := c.Param("id")
 	userId := c.MustGet("userId").(string)
@@ -316,18 +276,6 @@ func (h *Handler) DirectMessages(c *gin.Context) {
 	c.JSON(http.StatusOK, channels)
 }
 
-// GetOrCreateDM gets the DM with the given member and creates it
-// if it does not already exist
-// DirectMessages godoc
-// @Tags Channels
-// @Summary Get or Create DM
-// @Produce  json
-// @Param channelId path string true "Member ID"
-// @Success 200 {object} model.DirectMessage
-// @Failure 400 {object} model.ErrorResponse
-// @Failure 404 {object} model.ErrorResponse
-// @Failure 500 {object} model.ErrorResponse
-// @Router /channels/{channelId}/dm [post]
 func (h *Handler) GetOrCreateDM(c *gin.Context) {
 	userId := c.MustGet("userId").(string)
 	memberId := c.Param("id")
@@ -420,20 +368,6 @@ func toDMChannel(member *model.User, channelId string, userId string) model.Dire
 	}
 }
 
-// EditChannel edits the specified channel
-// EditChannel godoc
-// @Tags Channels
-// @Summary Edit Channel
-// @Accepts json
-// @Produce  json
-// @Param channelId path string true "Channel ID"
-// @Param request body channelReq true "Edit Channel"
-// @Success 200 {object} model.Success
-// @Failure 400 {object} model.ErrorsResponse
-// @Failure 401 {object} model.ErrorResponse
-// @Failure 404 {object} model.ErrorResponse
-// @Failure 500 {object} model.ErrorResponse
-// @Router /channels/{channelId} [put]
 func (h *Handler) EditChannel(c *gin.Context) {
 	var req channelReq
 
@@ -557,18 +491,6 @@ func difference(a, b []string) []string {
 	return diff
 }
 
-// DeleteChannel removes the given channel from the guild
-// DeleteChannel godoc
-// @Tags Channels
-// @Summary Delete Channel
-// @Produce  json
-// @Param id path string true "Channel ID"
-// @Success 200 {object} model.Success
-// @Failure 400 {object} model.ErrorResponse
-// @Failure 401 {object} model.ErrorResponse
-// @Failure 404 {object} model.ErrorResponse
-// @Failure 500 {object} model.ErrorResponse
-// @Router /channels/{id} [delete]
 func (h *Handler) DeleteChannel(c *gin.Context) {
 	userId := c.MustGet("userId").(string)
 	channelId := c.Param("id")
@@ -626,15 +548,6 @@ func (h *Handler) DeleteChannel(c *gin.Context) {
 	c.JSON(http.StatusOK, true)
 }
 
-// CloseDM closes the DM on the current users side
-// CloseDM godoc
-// @Tags Channels
-// @Summary Close DM
-// @Produce  json
-// @Param id path string true "DM Channel ID"
-// @Success 200 {object} model.Success
-// @Failure 404 {object} model.ErrorResponse
-// @Router /channels/{id}/dm [delete]
 func (h *Handler) CloseDM(c *gin.Context) {
 	userId := c.MustGet("userId").(string)
 	channelId := c.Param("id")
