@@ -1,4 +1,4 @@
-# `xoniaapp@server`
+# `@xoniaapp/server`
 
 ## Environment Variables
 
