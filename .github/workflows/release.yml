@@ -21,5 +21,4 @@ jobs:
           goarch: ${{ matrix.goarch }}
           project_path: './'
           binary_name: "xoniaapp"
-          build_command: 'go build -ldflags="-s -w"'
           md5sum: false
