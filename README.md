@@ -1,4 +1,19 @@
-# `@xoniaapp/server`
+# server
+
+## Building
+
+### 1. Make sure you have Go installed.
+
+### 2. Git clone the repo.
+
+```sh
+git clone git@github.com:xoniaapp/server.git
+```
+### 3. Build it
+
+```
+cd server && go build .
+```
 
 ## Environment Variables
 
@@ -17,3 +32,6 @@ export MAX_BODY_BYTES=""
 export MAIL_USER=""
 export MAIL_PASSWORD=""
 ```
+
+## License
+### [AGPL-3.0 LICENSE](./LICENSE)
