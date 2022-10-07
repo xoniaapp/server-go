@@ -198,8 +198,8 @@ func (s *userService) GetRequestCount(userId string) (*int64, error) {
 	return s.UserRepository.GetRequestCount(userId)
 }
 
-// generateAvatar returns a dicebear avatar using the md5 hash of the email
+// generateAvatar returns a xonia gradient avatar using the MD5 hash of the email.
 func generateAvatar(email string) string {
 	hash := md5.Sum([]byte(email))
-	return fmt.Sprintf("https://avatars.dicebear.com/api/identicon/%s.png", hex.EncodeToString(hash[:]))
+	return fmt.Sprintf("https://avatars.xoniaapp.com/%s", hex.EncodeToString(hash[:]))
 }
