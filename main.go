@@ -17,11 +17,11 @@ func main() {
 	log.Println("Starting ...")
 
 	gin.SetMode(gin.ReleaseMode)
-	err := godotenv.Load()
+// 	err := godotenv.Load()
 
-	if err != nil {
-		log.Fatalln("FAILED TO LOAD ENVIRONMENT VARIABLES!")
-	}
+// 	if err != nil {
+// 		log.Fatalln("FAILED TO LOAD ENVIRONMENT VARIABLES!")
+// 	}
 
 	ds, err := initDS()
 
@@ -66,5 +66,4 @@ func main() {
 	if err := srv.Shutdown(ctx); err != nil {
 		log.Fatalf("SERVER FORCED TO SHUT DOWN: %v\n", err)
 	}
-	// TODO: Use Sentry.
 }
