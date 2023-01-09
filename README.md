@@ -1,4 +1,10 @@
-# server
+# server (EOL)
+
+This repo has reached it's EOL (End of Life).
+
+The new one is being written with Fastify.
+
+[https://github.com/xoniaapp/server-node](https://github.com/xoniaapp/server-node)
 
 ## Building
 
