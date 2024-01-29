@@ -1,10 +1,13 @@
-
 FROM golang:alpine
 
-RUN go build . -o server
+WORKDIR /go/src/app
 
-RUN chmod +x ./server
+COPY . .
+
+RUN go get -d -v ./...
+
+RUN go build -o app
 
 EXPOSE 5000
 
-CMD ["./server"]
+CMD ["./app"]
