@@ -40,6 +40,7 @@ export SECRET=""
 export AWS_ACCESS_KEY=""
 export AWS_SECRET_ACCESS_KEY=""
 export AWS_STORAGE_BUCKET_NAME=""
+export AWS_S3_ENDPOINT=""
 export AWS_S3_REGION=""
 export HANDLER_TIMEOUT=""
 export MAX_BODY_BYTES=""
@@ -68,6 +69,7 @@ Environment=MAX_BODY_BYTES=
 Environment=AWS_ACCESS_KEY=
 Environment=AWS_SECRET_ACCESS_KEY=
 Environment=AWS_STORAGE_BUCKET_NAME=
+Environment=AWS_S3_ENDPOINT=
 Environment=AWS_S3_REGION=
 
 [Install]
